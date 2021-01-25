@@ -1,4 +1,5 @@
 
+import FileUpload from './components/FileUpload';
 import './App.css';
 /*
 1) upload anndata 
@@ -7,7 +8,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-
+      <FileUpload />
     </div>
   );
 }
