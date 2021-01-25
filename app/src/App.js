@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <FileUpload />
+      <SetupAnndata />
     </div>
   );
 }
