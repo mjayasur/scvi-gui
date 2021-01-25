@@ -12,7 +12,9 @@ class SetupAnndata extends React.Component {
     return (
         <div className = "container">
             <div class="setup-anndata">
+                <div className="form-row">
                 <label class="setup-anndata">Batch Key</label>
+                
                 <select class="form-control" id="batch-key-select">
                     <option>1</option>
                     <option>2</option>
@@ -30,6 +32,7 @@ class SetupAnndata extends React.Component {
                     <option>2</option>
                     <option>3</option>
                 </select>
+                </div>
                 <label class="setup-anndata">Protein Expression OBSM Key</label>
                 <select class="form-control" id="obsm-key-select">
                     <option>1</option>

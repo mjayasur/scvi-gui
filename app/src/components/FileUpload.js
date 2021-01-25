@@ -31,23 +31,28 @@ class FileUpload extends React.Component {
     // Send formData object 
     // fill with flask shit
 
-    
+
     // url = ""
     // axios.post(url, formData); 
   }
 
   render() {
     return (
-
+      <div>
           
-        <div className="container col-5  mt-3">
-
+        <div className="row mt-3">
+            <div className="col-5">
             <input onChange={this.onDataChange}  type="file" class="custom-file-input" id="data-input"  />
-            <button onClick={this.uploadData} type="button mt-4 " className="btn btn-success text-left">Upload</button>
 
             <label className="custom-file-label" for="data-input">Upload data file with <code>.h5ad</code> extension</label>
-            
+            </div>
+
         </div>
+                    <div className="row mt-2">
+                    <button onClick={this.uploadData} type="button mt-4 " className="btn btn-success text-left">Upload</button>
+        
+                    </div>
+                    </div>
 
 
 
