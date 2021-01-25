@@ -10,28 +10,33 @@ class SetupAnndata extends React.Component {
 
   render() {
     return (
-        <div className = "container">
+        <div>
             <div class="setup-anndata">
-                <div className="form-row">
-                <label class="setup-anndata">Batch Key</label>
-                
-                <select class="form-control" id="batch-key-select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <label class="setup-anndata">Labels Key</label>
-                <select class="form-control" id="labels-key-select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-                <label class="setup-anndata">Layer</label>
-                <select class="form-control" id="layer-select">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label class="setup-anndata">Batch Key</label>
+                        <select class="form-control" id="batch-key-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="setup-anndata">Labels Key</label>
+                        <select class="form-control" id="labels-key-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="setup-anndata">Layer</label>
+                        <select class="form-control" id="layer-select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
                 </div>
                 <label class="setup-anndata">Protein Expression OBSM Key</label>
                 <select class="form-control" id="obsm-key-select">
