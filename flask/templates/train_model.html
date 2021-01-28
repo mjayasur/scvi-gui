@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <link rel="stylesheet" href={{ url_for('static', filename='style.css') }}>
+        <link rel="stylesheet" href='testing.css'>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class = "container mt-3 text-center">
+            <div>
+                <img class="logo" src="https://www.scvi-tools.org/en/stable/_static/logo.png" />
+            </div>
+        </div>
+        <div class="container mt-3">
+            <!-- <button class="btn btn-success"> ◁ Back </button> -->
+            <p class = "h5 mt-3">Model type: <a href="https://www.scvi-tools.org/en/stable/api/model.html">(?)</a></p>
+            <form name="form" action="{{ url_for('train_model') }}" method="post">
+                <div class="form-group" >
+                    
+                    <select class="form-control" name="model_name">
+                        <option value="scvi">SCVI</option>
+                    </select>
+                </div>
+                <p class = "h5 mt-3">Model parameters: <a href="https://www.scvi-tools.org/en/stable/api/reference/scvi.model.SCVI.html">(?)</a> </p>
+                <div class="form-group row">
+                    <div class="col">
+                        <label class="">n_hidden</label>
+                        <input placeholder="128" class="form-control" name="n_hidden"></input>
+                    </div>
+                    <div class="col">
+                        <label class="">n_latent</label>
+                        <input placeholder="10" class="form-control" name="n_latent"></input>
+                    </div>
+                    <div class="col">
+                        <label class="">n_layers</label>
+                        <input placeholder="1" class="form-control" name="n_layers"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="">dropout_rate</label>
+                    <input placeholder="0.1" class="form-control" name="dropout_rate"></input>
+                    <label class="">dispersion</label>
+                    <input placeholder="gene" class="form-control" name="dispersion"></input>
+                    <label class="">gene_likelihood</label>
+                    <input placeholder="zinb" class="form-control" name="gene_likelihood"></input>
+                    <label class="">latent_distribution</label>
+                    <input placeholder="normal" class="form-control" name="latent_distribution"></input>
+                </div>
+                <p class = "h5 mt-3">Training parameters: <a href="https://www.scvi-tools.org/en/stable/api/reference/scvi.model.SCVI.train.html#scvi.model.SCVI.train">(?)</a> </p>
+                <div class="form-group">
+                    <label class="">n_epochs</label>
+                    <input placeholder="None" class="form-control" name="n_epochs"></input>
+                </div>
+                <div class="form-group row">
+                    <div class="col">
+                        <label class="">train_size</label>
+                        <input placeholder="0.9" class="form-control" name="train_size"></input>
+    
+                    </div>
+                    <div class="col">
+                        <label class="">test_size</label>
+                        <input placeholder="None" class="form-control" name="test_size"></input>
+    
+                    </div>
+                </div>
+                    <label class="">lr</label>
+                    <input placeholder="0.001" class="form-control" name="lr"></input>
+                    <div class="form-group row">
+                        <div class="col">
+                            <label class="">n_epochs_kl_warmup</label>
+                            <input placeholder="400" class="form-control" name="n_epochs_kl_warmup"></input>
+        
+                        </div>
+                        <div class="col">
+                            <label class="">n_iter_kl_warmup</label>
+                            <input placeholder="None" class="form-control" name="n_iter_kl_warmup"></input>
+        
+                        </div>
+                    </div>                    <label class="">frequency</label>
+                    <input placeholder="None" class="form-control" name="frequency"></input>
+                
+                    
+                
+
+                <button type="submit" class="btn btn-success mt-3">Train model</button>
+            </form>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    </body>
+</html>
