@@ -58,7 +58,7 @@ def setup_anndata():
             uns_keys = [None] + list(adata.uns.overloaded.keys()),
             )
     if request.method == 'POST':
-        print (request.form)
+        print ("from anndata", request.form)
         config = {
             'batch_key' : request.form['batch_key'],
             'protein_expression_obsm_key' : request.form['protein_expression_obsm_key'],
@@ -71,10 +71,14 @@ def setup_anndata():
 @app.route('/train_model', methods=['GET', 'POST'])
 def train_model():
     if request.method == 'GET':
-        return render_template("templates/train_model")
+        return render_template("/train_model.html")
     if request.method == 'POST':
         
-        anndata_config = json.load("anndata_config.json")
+        anndata_config =  json.load(open("anndata_config.json", 'r'))
+        anndata_config = {key : anndata_config[key] for key in anndata_config  if anndata_config[key] and anndata_config[key] != 'None'}
+        print ("anndata_config", anndata_config)
+        # print (request.form)
+        model_params = request.form.to_dict(flat=False)
 
         adata = scvi.data.read_h5ad("data.h5ad")
         sc.pp.filter_genes(adata, min_counts=3)
@@ -83,22 +87,19 @@ def train_model():
             adata,
             n_top_genes=2000,
             subset=True,
-            layer="counts",
             flavor="seurat_v3"
         )
 
         scvi.data.setup_anndata(
             adata, 
-            batch_key=anndata_config['batch_key'], 
-            protein_expression_obsm_key=anndata_config['protein_expression_obsm_key'], 
-            protein_names_uns_key = anndata_config['protein_names_uns_key']
+            **anndata_config
         )
 
         model = scvi.model.SCVI(adata)
 
         model.train()
 
-        model.save("model")
+        model.save("my_model")
 
         return redirect('/')
 
